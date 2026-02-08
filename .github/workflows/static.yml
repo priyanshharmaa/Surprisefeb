@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Chunnu ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="icon" href="https://fav.farm/❤️" />
+
+    <style>
+        :root {
+            --primary-pink: #ff4d6d;
+            --deep-red: #c9184a;
+            --violet: #7209b7;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #ffafbd, #ffc3a0, #ee9ca7, #ffdde1);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "❤️ 🌸 ♡ ✿ ❤️ ❀ ♡";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            font-size: 3rem;
+            opacity: 0.12;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            pointer-events: none;
+            z-index: -1;
+            padding: 20px;
+            color: var(--deep-red);
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        #gift-screen {
+            position: fixed;
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            background: var(--deep-red);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .gift-box { font-size: 80px; cursor: pointer; animation: bounce 2s infinite; }
+
+        .page {
+            display: none;
+            width: 85%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 20px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border: 3px solid white;
+            animation: slideIn 0.5s ease-out;
+            text-align: center;
+        }
+
+        .active { display: block; }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            color: var(--deep-red);
+            font-size: 2.1rem;
+            margin: 10px 0;
+        }
+
+        .main-img {
+            width: auto;
+            max-width: 100%;
+            max-height: 280px;
+            border-radius: 15px;
+            border: 3px solid var(--primary-pink);
+            margin: 0 auto 10px auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        #lyrics-container {
+            position: fixed;
+            bottom: 15px;
+            width: 100%;
+            color: var(--deep-red);
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+            z-index: 50;
+        }
+
+        button {
+            padding: 10px 30px;
+            font-size: 1.1rem;
+            font-family: 'Dancing Script', cursive;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: var(--primary-pink);
+            color: white;
+            box-shadow: 0 4px 12px rgba(255, 77, 109, 0.3);
+            margin-top: 10px;
+        }
+
+        #noBtn { background-color: #6c757d; position: absolute; }
+
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-20px);} }
+        @keyframes slideIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="https://files.catbox.moe/lnb37e.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="gift-screen">
+        <div class="gift-box" onclick="openGift()">🎁</div>
+        <h1 style="color: white; font-size: 1.8rem;">I have a pyara sa surprise for you...</h1>
+    </div>
+
+    <div id="page1" class="page">
+        <img src="https://raw.githubusercontent.com/priyanshharmaa/Surprisefeb/ae7b1713e446e1ef6e683739b6443cd54b3a30f7/signal-2026-02-07-23-05-39-766.jpg" class="main-img">
+        <h1>Hello Babe, How is everything going? Excited?</h1>
+        <button onclick="nextPage(2)">Yes! ✨</button>
+    </div>
+
+    <div id="page2" class="page">
+        <img src="https://raw.githubusercontent.com/priyanshharmaa/Surprisefeb/ae7b1713e446e1ef6e683739b6443cd54b3a30f7/signal-2026-02-07-23-09-30-134.jpg" class="main-img">
+        <h1>5 Years and here we go...</h1>
+        <p style="font-size: 0.9rem;">Our 1st Valentine's. Not very special but your Priya baby knows how to make you happy with his creative ideas. I love you chunnu.</p>
+        <button onclick="nextPage(3)">I love you too ❤️</button>
+    </div>
+
+    <div id="page3" class="page">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1bmx4Z3R4bmV4bmV4bmV4bmV4bmV4bmV4bmV4bmV4bmV4bmV4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/26FLdmIp6wJr91JAI/giphy.gif" class="main-img">
+        <h1>Chunnu, will you be my Valentine? ❤️</h1>
+        <div style="position:relative; min-height:100px; margin-top: 15px;">
+            <button id="yesBtn" onclick="celebrate()">YES!</button>
+            <button id="noBtn" style="top:50px; left:50%; transform: translateX(-50%);" onmouseover="moveNo()" onclick="moveNo()">No</button>
+        </div>
+    </div>
+
+    <div id="page4" class="page">
+        <h1>It's a Date! 🥰</h1>
+        <div style="text-align: left; background: #fff; padding: 12px; border-radius: 15px; border-left: 5px solid var(--violet); font-size: 0.9rem;">
+            <p>📍 <b>Venue:</b> Gola sizzler, preet vihar</p>
+            <p>⏰ <b>Time:</b> 1:30</p>
+            <p>👗 <b>Dress:</b> You can wear me vaise😉</p>
+        </div>
+        <button onclick="nextPage(5)">Okay bubu</button>
+    </div>
+
+    <div id="page5" class="page">
+        <h1 style="font-size: 1.4rem;">Waiting for you meri pyari si chunnu, bubu, mintukla, rasmalai, golgappa, chole bhature. Priya baby always loves you🫂❤️</h1>
+    </div>
+
+    <div id="lyrics-container"></div>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        const lyricsBox = document.getElementById('lyrics-container');
+        const lyrics = ["I love it when you call me señorita...", "I wish I could pretend I didn't need ya...", "But every touch is ooh-la-la-la...", "Ooh, I should be running...", "Ooh, you keep me coming for ya..."];
+        let lyricIndex = 0;
+
+        function showLyrics() {
+            if (lyricIndex < lyrics.length) {
+                lyricsBox.innerHTML = lyrics[lyricIndex++];
+                setTimeout(showLyrics, 4000);
+            } else { lyricIndex = 0; showLyrics(); }
+        }
+
+        function openGift() {
+            document.getElementById('gift-screen').style.transform = 'translateY(-100%)';
+            // Start at 8 seconds
+            music.currentTime = 8; 
+            music.play();
+            showLyrics();
+            setTimeout(() => { document.getElementById('page1').classList.add('active'); }, 500);
+        }
+
+        function nextPage(num) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page' + num).classList.add('active');
+        }
+
+        function moveNo() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth - 40);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight - 40);
+            btn.style.position = 'fixed'; btn.style.left = x + 'px'; btn.style.top = y + 'px';
+        }
+
+        function celebrate() {
+            var end = Date.now() + (5 * 1000);
+            (function frame() {
+              confetti({ particleCount: 20, angle: 60, spread: 70, origin: { x: 0 }, colors: ['#ff4d6d', '#ffffff', '#ffb703'] });
+              confetti({ particleCount: 20, angle: 120, spread: 70, origin: { x: 1 }, colors: ['#ff4d6d', '#ffffff', '#ffb703'] });
+              if (Date.now() < end) { requestAnimationFrame(frame); }
+            }());
+            setTimeout(() => { nextPage(4); }, 3500);
+        }
+    </script>
+</body>
+</html>
